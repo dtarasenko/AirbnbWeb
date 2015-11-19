@@ -1,6 +1,5 @@
 package com.gojava6.airbnb.model;
 
-import org.apache.log4j.Logger;
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class Apartment {
     @Column(name = "apartment_description", nullable = false, length = 100)
     private String apartmentDescription;
 
-    @Column(name = "apartment_type", nullable = false)
+    @Column(name = "type", nullable = false)
     private String apartmentType;
 
     @Column(name = "number_of_guests", nullable = false)
