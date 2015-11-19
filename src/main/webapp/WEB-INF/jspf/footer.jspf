@@ -1,0 +1,89 @@
+		<footer>
+		</footer>
+	</div>
+
+	<div id="modal" class="popupContainer" style="display:none;">
+		<div class="popupWrap">
+			<div class="popupContent">
+				<div class="form_user_login">
+					<form action="login" method="POST">
+						<fieldset>
+							<input type="email" id="email" name="email" size="39" required placeholder="Email Address">
+							<input type="password" id="password" name="password" size="39" required placeholder="Password">
+						</fieldset>
+						<button type="submit" class="mybutton">Log In</button>
+						<hr>
+						<p>Don't have an account? <a href="#" id="popup_signup" name="popup_signup">Sign up</a></p>
+					</form>
+				</div>
+
+				<div class="form_user_signup">
+					<form action="signup" method="POST">
+						<fieldset>
+							<input type="text" id="name" name="name" size="39" required placeholder="Name" >
+
+							<input type="text" id="surname" name="surname" size="39" required placeholder="Surname">
+
+							<input type="email" id="email" name="email" size="39" required placeholder="Email Address">
+
+							<input type="password" id="password" name="password" size="39" required placeholder="Password">
+						</fieldset>
+
+						<p>By signing up, I agree to Airbnb's Terms of Service, Private Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
+
+						<button type="submit" class="mybutton">Sign Up</button>
+						<hr>
+						<p>Already an Airbnb member? <a href="#" id="popup_login" name="popup_login">Log in</a></p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/wow.min.js"></script>
+	<script>
+	 wow = new WOW(
+	  {
+	  boxClass:     'block',      // default
+	  animateClass: 'animated', // default
+	  offset:       0,          // default
+	  mobile:       true,       // default
+	  live:         true        // default
+	}
+	)
+	wow.init();
+	</script>
+
+	<script>
+    	$("#trigger_popup_signup").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+    	$("#trigger_popup_login").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+
+    	$(function () {
+    		$("#trigger_popup_signup").click(function () {
+    			$(".form_user_login").hide();
+    			$(".form_user_signup").show();
+    			return false;
+    		});
+
+    		$("#trigger_popup_login").click(function () {
+    			$(".form_user_signup").hide();
+    			$(".form_user_login").show();
+    			return false;
+    		});
+
+    		$("#popup_signup").click(function () {
+    			$(".form_user_login").hide();
+    			$(".form_user_signup").show();
+    			return false;
+    		});
+
+    		$("#popup_login").click(function () {
+    			$(".form_user_signup").hide();
+    			$(".form_user_login").show();
+    			return false;
+    		});
+    	})
+    	</script>
+	
+</body>
+</html>

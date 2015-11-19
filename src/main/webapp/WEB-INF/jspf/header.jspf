@@ -1,0 +1,59 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>airbnb</title>
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animate.css">
+</head>
+<body>
+
+	<div class="wrap">
+	
+		<div class="superheader">
+			<a href="/AirbnbWeb/">
+				<img src="img/airbnb-white.png" class="airbnblogo">
+			</a>
+			<ul class="menu">
+				<li><a href="#">Become a Host</a></li>
+				<li><a href="#">Help</a></li>
+				<li><a id="trigger_popup_signup" href="#modal">Sign Up</a></li>
+
+				<% String logged = (String) session.getAttribute("logged-in");
+				if (logged == "true") { %>
+					<li><a href="logout">Log Out</a></li>
+				<% } else { %>
+					<li><a id="trigger_popup_login" href="#modal">Log In</a></li>
+				<% } %>
+			</ul>
+		</div class="superheader">
+
+		<div class="header">
+
+			<h1><c:out value="${h1}" default="WELCOME HOME"/></h1>
+			<h2><c:out value="${h2}" default="Rent unique places to stay from local hosts in 190+ countries"/></h2>
+
+			<form>
+				<fieldset>
+					<label><input type="text" name="city" placeholder="Where do you want to go?" autofocus size="50"
+						maxlength="20" required></label>
+					<label><input id="input_calendar" type="date" name="start" required></label>
+					<label><input id="input_calendar" type="date" name="end" required></label>
+
+					<select name="sel">
+						<option value="BMW">place</option>
+						<option value="Tesla">room</option>
+						<option value="Toyota">apartment</option>
+					</select>
+
+
+					<button type="submit" >Search</button>
+				</fieldset>
+			</form>
+		</div class="header">

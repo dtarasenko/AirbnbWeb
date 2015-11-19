@@ -1,0 +1,360 @@
+/*--------------------------------------------------------------*/
+/******************         Global         **********************/
+/*--------------------------------------------------------------*/
+
+
+
+
+/*--------------------------------------------------------------*/
+/***************** 			LAYOUT 		  ***********************/
+/*--------------------------------------------------------------*/
+
+html {
+	min-height: 100%;
+}
+
+.wrap {
+	margin: 0 auto;
+	/* background: url("https://climateimagination.asu.edu/files/2015/04/header-hot-air-balloon.jpg") #eee; */
+	background: url('../img/header-hot-air-balloon.jpg') #eee;
+	background-repeat: no-repeat;
+	background-size: contain;	
+}
+
+.superheader {
+	margin: 0 auto;
+	height: 60px;
+	width: 100%;
+}
+
+.header {
+	margin: 0 auto;
+	height: 518px;
+	width: 100%;
+}
+
+
+section {
+	margin: 15px auto;
+	width: 1000px;
+	min-height: 200px;
+}
+
+footer {
+	height: 180px;
+	width: 100%;
+	background-image: url('../img/footer.png');
+	background-color: #2b2d2e;
+}
+
+
+
+/*--------------------------------------------------------------*/
+/***************** 			HEADER 		  ***********************/
+/*--------------------------------------------------------------*/
+
+
+.superheader {
+	position: relative;
+}
+
+.superheader .menu {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.superheader .menu li {
+	float: left;
+	margin: 5px 20px;
+}
+
+.superheader .menu li a {
+	display: block;
+	line-height: 40px;
+	padding: 1px 21px;
+	text-decoration: none;
+	font-size: 15px;
+	color: white;
+	min-width: 50px;
+	text-align: center;
+}
+
+.superheader .menu li a:hover {
+	padding: 0 20px;
+	border: 1px solid white;
+	border-radius: 3px;
+}
+
+.superheader .airbnblogo {
+	width: 8%;
+	position: absolute;
+	left: 40px;
+	top: 10px;
+}
+
+.header {
+	position: relative;
+}
+
+.header h1 {
+	text-align: center;
+	padding-top: 170px;
+	padding-bottom: 5px;
+	text-decoration: none;
+	color: white;
+	font-size: 60px;
+}
+
+.header h2 {
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+.header form {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	padding: 30px 0;
+	text-align: center;
+	background-color: rgba(0,0,0,0.3);
+}
+
+.header input {
+	height: 37px;
+	font-weight: bold;
+	padding-left: 6px;
+	color: #A4A4A4;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 0;
+}
+
+.header #input_calendar {
+	height: 39px;
+}
+
+.header select {
+	height: 39px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	font-weight: bold;
+	padding-left: 6px;
+	color: #A4A4A4;
+	border: 0;
+}
+
+.header button {
+	height: 39px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	cursor: pointer;
+	background-color: #ff5a5f;
+	border-bottom-color: #e00007;
+	width: 100px;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	color: white;
+	font-weight: bold;
+}
+
+.header button:hover {
+	background-color: #ff7e82;
+	border-bottom-color: #fa0008;
+}
+
+
+
+
+/*--------------------------------------------------------------*/
+/***************** 			CONTENT 	  ***********************/
+/*--------------------------------------------------------------*/
+
+
+
+.blocks .block {
+	display: inline-block;
+	width: 320px;
+	height: 340px;
+	padding: 4px 4px;
+	font-size: 14px;
+	text-decoration: none;
+	-webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
+    animation-duration: 3s;
+}
+
+
+.img {
+	width: 320px;
+	height: 340px;
+	object-fit: cover;
+}
+
+.blocks .block a {
+	position: absolute;
+	line-height: 340px;
+	width: 320px;
+	color: white;
+	font-size: 50px;
+	text-align: center;
+	text-decoration: none;
+}
+
+.apartmentBlocks .apartmentBlock {
+	margin-top: 10px;
+	background-color: #E6E6E6;
+	display: inline-block;
+	width: 1000px;
+	height: 100px;
+	padding: 4px 4px;
+	font-size: 14px;
+	text-decoration: none;
+	-webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
+    animation-duration: 3s;
+}
+
+.apartmentBlocks .apartmentBlock a {
+	color: black;
+}
+
+.apartmentBlocks .apartmentBlock h3 {
+	float: left;
+	width: 1000px;
+	text-align: center;
+	font-size: 25px;
+	padding-top: 10px;
+	padding-bottom: 4px;
+}
+
+.apartmentBlocks .apartmentBlock p {
+	float: left;
+	width: 340px;
+	padding-left: 160px;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.contactBlock {
+	margin-top: 10px;
+	background-color: #E6E6E6;
+	width: 1000px;
+	height: 130px;
+	padding: 4px 4px;
+	font-size: 14px;
+	text-decoration: none;
+	-webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
+    animation-duration: 3s;
+}
+
+.contactBlock h3 {
+	float: left;
+	width: 1000px;
+	text-align: center;
+	font-size: 25px;
+	padding-top: 10px;
+	padding-bottom: 4px;
+}
+
+.contactBlock p {
+	float: left;
+	width: 840px;
+	padding-left: 160px;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+/*--------------------------------------------------------------*/
+/***************** 			FOOTER 		  ***********************/
+/*--------------------------------------------------------------*/
+
+
+
+
+
+
+
+/*--------------------------------------------------------------*/
+/***************** 			MODAL 		  ***********************/
+/*--------------------------------------------------------------*/
+
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+
+.popupContainer{
+	height: auto;
+}
+
+
+.form_user_login {
+	display: none;
+}
+
+.form_user_signup {
+	display: none;
+}
+
+
+.popupWrap {
+	width: 350px;
+	background-color: #eee;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.popupContent {
+	overflow-y: auto;
+	overflow-x: hidden;
+	color: #585858;
+}
+
+.popupContent form {
+	padding: 20px 20px 5px 20px;
+}
+
+.popupContent form input {
+	line-height: 30px;
+	margin-bottom: 15px;
+	padding-left: 6px;
+}
+
+.popupContent form p {
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.popupContent form a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #585858;
+}
+
+.popupContent .mybutton {
+	line-height: 32px;
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 25px;
+	background-color: #ff5a5f;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	border: 0;
+}
+
+.popupContent .mybutton:hover {
+	background-color: #ff7e82;
+}
