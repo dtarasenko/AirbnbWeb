@@ -21,7 +21,7 @@
 				<img src="img/airbnb-white.png" class="airbnblogo">
 			</a>
 			<ul class="menu">
-				<li><a href="#">Become a Host</a></li>
+				<li><a id="trigger_popup_become_host" href="#modal">Become a Host</a></li>
 				<li><a href="#">Help</a></li>
 				<li><a id="trigger_popup_signup" href="#modal">Sign Up</a></li>
 

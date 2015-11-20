@@ -14,14 +14,24 @@ public class UserService  {
         this.iUserDao = iUserDao;
     }
 
-    public boolean isSignedUpUser(String email, String password) {
+    public User findUserByEmail(String email) {
+        List<User> userList = getUserList();
+        for (User user : userList) {
+            if (email.equals(user.getEmail())) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public User findUserByEmailAndPassword(String email, String password) {
         List<User> userList = getUserList();
         for (User user : userList) {
             if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
-                return true;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
     public void createUser(String name, String surname, String email, UserType userType, String password) {

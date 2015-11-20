@@ -326,10 +326,18 @@ footer {
 }
 
 .popupContent form input {
-	line-height: 30px;
-	margin-bottom: 15px;
-	padding-left: 6px;
-}
+ 	line-height: 30px;
+ 	margin-bottom: 15px;
+ 	padding-left: 6px;
+ }
+
+
+ .popupContent form select {
+ 	margin-bottom: 15px;
+ 	height: 39px;
+ 	width: 154px;
+ 	padding-left: 6px;
+ }
 
 .popupContent form p {
 	font-size: 12px;

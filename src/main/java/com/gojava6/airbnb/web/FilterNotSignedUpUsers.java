@@ -23,7 +23,7 @@ public class FilterNotSignedUpUsers implements Filter {
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         UserService userService = (UserService) context.getBean("userService");
 
-        if (!userService.isSignedUpUser(email, password)) {
+        if (userService.findUserByEmailAndPassword(email, password) == null) {
             try {
                 request.setAttribute("h1", "Incorrect email or password. Please try again.");
                 request.setAttribute("h2", "");

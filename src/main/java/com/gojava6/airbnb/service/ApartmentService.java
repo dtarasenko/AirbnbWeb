@@ -17,8 +17,6 @@ public class ApartmentService {
         this.iApartmentDao = iApartmentDao;
     }
 
-
-
     public Set<City> getCitiesWithApartments() {
         Set<City> citySet = new HashSet<City>();
         for (Apartment apartment : getApartmentList()) {
@@ -43,10 +41,15 @@ public class ApartmentService {
         return true;
     }
 
-
-
     public void createApartment(String apartmentDescription, ApartmentType apartmentType, int numberOfGuests, int price,
-                                User user, City city) {
+                                String userEmail, String cityName) {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        UserService userService = (UserService) context.getBean("userService");
+        User user = userService.findUserByEmail(userEmail);
+        CityService cityService = (CityService) context.getBean("cityService");
+        City city = cityService.findCityByName(cityName);
+
         Apartment apartment = new Apartment();
         apartment.setApartmentDescription(apartmentDescription);
         apartment.setApartmentType(apartmentType.getApartmentType());
@@ -68,7 +71,5 @@ public class ApartmentService {
     public List<Apartment> getApartmentList() {
         return iApartmentDao.getApartmentList();
     }
-
-
 
 }

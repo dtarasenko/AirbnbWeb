@@ -36,6 +36,32 @@
 						<p>Already an Airbnb member? <a href="#" id="popup_login" name="popup_login">Log in</a></p>
 					</form>
 				</div>
+
+				<div class="form_become_host">
+					<form action="addapartment" method="POST">
+						<fieldset>
+							<input type="text" id="description" name="description" size="39" required placeholder="Place name" >
+							<select name="apartment_type">
+								<option disabled selected>Home Type</option>
+								<option value="place">place</option>
+								<option value="room">room</option>
+								<option value="apartment">apartment</option>
+							</select>
+							<select name="number_of_guests">
+								<option disabled selected>Accommodates</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<input type="text" id="city" name="city" size="39" required placeholder="City" >
+						</fieldset>
+						<button type="submit" class="mybutton">Confirm</button>
+						<hr>
+						<p>Please login before adding apartment? <a href="#" id="popup_login2" name="popup_login2">Log in</a></p>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -57,19 +83,29 @@
 	<script>
     	$("#trigger_popup_signup").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
     	$("#trigger_popup_login").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+    	$("#trigger_popup_become_host").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
 
     	$(function () {
     		$("#trigger_popup_signup").click(function () {
+    			$(".form_become_host").hide();
     			$(".form_user_login").hide();
     			$(".form_user_signup").show();
     			return false;
     		});
 
     		$("#trigger_popup_login").click(function () {
+    			$(".form_become_host").hide();
     			$(".form_user_signup").hide();
     			$(".form_user_login").show();
     			return false;
     		});
+
+			$("#trigger_popup_become_host").click(function () {
+				$(".form_user_signup").hide();
+				$(".form_user_login").hide();
+				$(".form_become_host").show();
+				return false;
+			});
 
     		$("#popup_signup").click(function () {
     			$(".form_user_login").hide();
@@ -82,6 +118,12 @@
     			$(".form_user_login").show();
     			return false;
     		});
+
+    		$("#popup_login2").click(function () {
+				$(".form_become_host").hide();
+				$(".form_user_login").show();
+				return false;
+			});
     	})
     	</script>
 	

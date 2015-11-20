@@ -47,6 +47,10 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllerServlet</servlet-name>
+        <url-pattern>/addapartment</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
@@ -83,6 +87,10 @@
     <filter-mapping>
         <filter-name>FilterNotLoggedInUsers</filter-name>
         <url-pattern>/contacts</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterNotLoggedInUsers</filter-name>
+        <url-pattern>/addapartment</url-pattern>
     </filter-mapping>
 
     <filter>

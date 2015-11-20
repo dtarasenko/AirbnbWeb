@@ -1,5 +1,7 @@
 package com.gojava6.airbnb.web;
 
+import com.gojava6.airbnb.model.ApartmentType;
+import com.gojava6.airbnb.model.User;
 import com.gojava6.airbnb.model.UserType;
 import com.gojava6.airbnb.service.ApartmentService;
 import com.gojava6.airbnb.service.SearchService;
@@ -97,7 +99,24 @@ public class ControllerServlet extends HttpServlet {
 
         } else if (userPath.equals("/login")) {
 
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
             session.setAttribute("logged-in", "true");
+            session.setAttribute("email", email);
+            response.sendRedirect("http://localhost:8080/AirbnbWeb/");
+
+        } else if (userPath.equals("/addapartment")) {
+
+            String apartmentDescription = request.getParameter("description");
+            String apartmentType = request.getParameter("apartment_type");
+            int numberOfGuests =Integer.parseInt(request.getParameter("number_of_guests"));
+            int price = 2;
+            String email = (String) session.getAttribute("email");
+            String city = request.getParameter("city");
+
+            ApartmentService apartmentService = (ApartmentService) context.getBean("apartmentService");
+            apartmentService.createApartment(apartmentDescription, ApartmentType.ROOM,
+                    numberOfGuests, price, email, city);
             response.sendRedirect("http://localhost:8080/AirbnbWeb/");
         }
     }
