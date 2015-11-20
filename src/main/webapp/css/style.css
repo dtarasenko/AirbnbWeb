@@ -326,6 +326,7 @@ footer {
 }
 
 .popupContent form input {
+	width: 300px;
  	line-height: 30px;
  	margin-bottom: 15px;
  	padding-left: 6px;
@@ -333,9 +334,9 @@ footer {
 
 
  .popupContent form select {
+ 	width: 100%;
  	margin-bottom: 15px;
  	height: 39px;
- 	width: 154px;
  	padding-left: 6px;
  }
 

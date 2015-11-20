@@ -16,4 +16,8 @@ public enum ApartmentType {
     public String getApartmentType() {
         return apartmentType;
     }
+
+    public ApartmentType getByName(String name) {
+        return ApartmentType.valueOf(name);
+    }
 }

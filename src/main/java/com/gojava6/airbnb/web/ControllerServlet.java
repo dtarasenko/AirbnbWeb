@@ -108,14 +108,14 @@ public class ControllerServlet extends HttpServlet {
         } else if (userPath.equals("/addapartment")) {
 
             String apartmentDescription = request.getParameter("description");
-            String apartmentType = request.getParameter("apartment_type");
+            ApartmentType apartmentType = ApartmentType.values()[Integer.parseInt(request.getParameter("apartment_type"))];
             int numberOfGuests =Integer.parseInt(request.getParameter("number_of_guests"));
-            int price = 2;
+            int price = Integer.parseInt(request.getParameter("price"));
             String email = (String) session.getAttribute("email");
             String city = request.getParameter("city");
 
             ApartmentService apartmentService = (ApartmentService) context.getBean("apartmentService");
-            apartmentService.createApartment(apartmentDescription, ApartmentType.ROOM,
+            apartmentService.createApartment(apartmentDescription, apartmentType,
                     numberOfGuests, price, email, city);
             response.sendRedirect("http://localhost:8080/AirbnbWeb/");
         }
