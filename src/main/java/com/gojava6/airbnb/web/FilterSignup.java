@@ -8,7 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class FilterNotSignedUpUsers implements Filter {
+public class FilterSignup implements Filter {
 
 
     public void init(FilterConfig filterConfig) throws ServletException {

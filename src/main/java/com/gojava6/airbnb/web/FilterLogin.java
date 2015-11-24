@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class FilterNotLoggedInUsers implements Filter {
+public class FilterLogin implements Filter {
 
 
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -21,7 +21,7 @@ public class FilterNotLoggedInUsers implements Filter {
             try {
                 request.setAttribute("h1", "Please log in to continue");
                 request.setAttribute("h2", "");
-                request.getRequestDispatcher("/").forward(servletRequest, servletResponse);
+                request.getRequestDispatcher("index.jsp").forward(servletRequest, servletResponse);
             } catch (Exception e) {
                 e.printStackTrace();
             }

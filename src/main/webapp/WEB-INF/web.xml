@@ -25,6 +25,27 @@
 
 
 
+    <filter>
+        <filter-name>FilterSignup</filter-name>
+        <filter-class>com.gojava6.airbnb.web.FilterSignup</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterSignup</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FilterLogin</filter-name>
+        <filter-class>com.gojava6.airbnb.web.FilterLogin</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterLogin</filter-name>
+        <url-pattern>/addapartment</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterLogin</filter-name>
+        <url-pattern>/contacts</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>ControllerServlet</servlet-name>
@@ -34,7 +55,6 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -51,7 +71,6 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/addapartment</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/search</url-pattern>
@@ -60,8 +79,6 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/contacts</url-pattern>
     </servlet-mapping>
-
-
     <servlet-mapping>
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
@@ -79,27 +96,5 @@
         <url-pattern>/adminreservations</url-pattern>
     </servlet-mapping>
 
-
-    <filter>
-        <filter-name>FilterNotLoggedInUsers</filter-name>
-        <filter-class>com.gojava6.airbnb.web.FilterNotLoggedInUsers</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>FilterNotLoggedInUsers</filter-name>
-        <url-pattern>/contacts</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>FilterNotLoggedInUsers</filter-name>
-        <url-pattern>/addapartment</url-pattern>
-    </filter-mapping>
-
-    <filter>
-        <filter-name>FilterNotSignedUpUsers</filter-name>
-        <filter-class>com.gojava6.airbnb.web.FilterNotSignedUpUsers</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>FilterNotSignedUpUsers</filter-name>
-        <url-pattern>/login</url-pattern>
-    </filter-mapping>
 
 </web-app>

@@ -45,9 +45,9 @@
 
 							<select name="apartment_type" required>
 								<option value="" disabled selected>Home Type</option>
-								<option value="1">place</option>
-								<option value="2">room</option>
-								<option value="3">apartment</option>
+								<option value="0">place</option>
+								<option value="1">room</option>
+								<option value="2">apartment</option>
 							</select>
 
 							<select name="number_of_guests" required>
@@ -64,7 +64,7 @@
 							<input type="number" id="price" name="price" min="0" max="10000" placeholder="$price per day" required>
 						</fieldset>
 
-						<button type="submit" class="mybutton">Confirm</button>
+						<button type="submit" class="mybutton">Add apartment to my profile</button>
 						<hr>
 						<p>Please login before adding apartment? <a href="#" id="popup_login2" name="popup_login2">Log in</a></p>
 					</form>
