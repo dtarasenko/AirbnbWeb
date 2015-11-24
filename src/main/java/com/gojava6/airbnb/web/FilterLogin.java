@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class FilterLogin implements Filter {
 
-
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }

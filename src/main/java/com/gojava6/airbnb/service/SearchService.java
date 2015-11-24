@@ -1,8 +1,7 @@
 package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.model.Apartment;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.gojava6.airbnb.web.Listener.Context;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,8 +16,7 @@ public class SearchService {
     }
 
     public SearchService() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        ApartmentService apartmentService = (ApartmentService) context.getBean("apartmentService");
+        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
         this.apartmentList = apartmentService.getApartmentList();
     }
 
@@ -60,8 +58,7 @@ public class SearchService {
     }
 
     public void filterByDates(Date startDate, Date endDate){
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        ApartmentService apartmentService = (ApartmentService) context.getBean("apartmentService");
+        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
 
         long start = startDate.getTime();
         long end = endDate.getTime();

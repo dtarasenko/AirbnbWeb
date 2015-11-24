@@ -5,8 +5,7 @@ import com.gojava6.airbnb.model.Subscriber;
 import com.gojava6.airbnb.model.User;
 import com.gojava6.airbnb.observer.Observer;
 import com.gojava6.airbnb.observer.Subject;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.gojava6.airbnb.web.Listener.Context;
 
 import java.util.List;
 
@@ -51,8 +50,7 @@ public class LoyaltyProgramService implements Subject {
     public void notifyObservers() {
         System.out.println("\nNotifying all registered clients about new loyalty programs:");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        UserService userService = (UserService) context.getBean("userService");
+        UserService userService = (UserService) Context.getContext().getBean("userService");
 
         List<Subscriber> subscriberList = iSubscriberDao.getSubscriberList();
 

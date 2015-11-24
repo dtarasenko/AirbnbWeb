@@ -2,8 +2,7 @@ package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.dao.IApartmentDao;
 import com.gojava6.airbnb.model.*;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.gojava6.airbnb.web.Listener.Context;
 
 import java.util.HashSet;
 import java.util.List;
@@ -44,10 +43,9 @@ public class ApartmentService {
     public void createApartment(String apartmentDescription, ApartmentType apartmentType, int numberOfGuests, int price,
                                 String userEmail, String cityName) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        UserService userService = (UserService) context.getBean("userService");
+        UserService userService = (UserService) Context.getContext().getBean("userService");
         User user = userService.findUserByEmail(userEmail);
-        CityService cityService = (CityService) context.getBean("cityService");
+        CityService cityService = (CityService) Context.getContext().getBean("cityService");
         City city = cityService.findCityByName(cityName);
 
         Apartment apartment = new Apartment();

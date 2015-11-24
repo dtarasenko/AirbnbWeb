@@ -10,9 +10,11 @@
 
     <description>ServletContextListener</description>>
     <listener>
-        <listener-class>com.gojava6.airbnb.web.ListnerEMF</listener-class>>
+        <listener-class>com.gojava6.airbnb.web.Listener.EMF</listener-class>>
     </listener>
-
+    <listener>
+        <listener-class>com.gojava6.airbnb.web.Listener.Context</listener-class>>
+    </listener>
 
     <jsp-config>
         <jsp-property-group>

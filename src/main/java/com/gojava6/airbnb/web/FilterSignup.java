@@ -1,15 +1,13 @@
 package com.gojava6.airbnb.web;
 
 import com.gojava6.airbnb.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.gojava6.airbnb.web.Listener.Context;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class FilterSignup implements Filter {
-
 
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -20,8 +18,7 @@ public class FilterSignup implements Filter {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        UserService userService = (UserService) context.getBean("userService");
+        UserService userService = (UserService) Context.getContext().getBean("userService");
 
         if (userService.findUserByEmailAndPassword(email, password) == null) {
             try {

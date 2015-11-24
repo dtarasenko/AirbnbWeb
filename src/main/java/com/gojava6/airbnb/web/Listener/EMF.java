@@ -1,4 +1,4 @@
-package com.gojava6.airbnb.web;
+package com.gojava6.airbnb.web.Listener;
 
 import javax.persistence.Persistence;
 import javax.persistence.EntityManagerFactory;
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class ListnerEMF implements ServletContextListener {
+public class EMF implements ServletContextListener {
 
     private static EntityManagerFactory emf;
 

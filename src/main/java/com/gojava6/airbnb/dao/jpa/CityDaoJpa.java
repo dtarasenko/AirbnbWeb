@@ -2,7 +2,7 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.ICityDao;
 import com.gojava6.airbnb.model.City;
-import com.gojava6.airbnb.web.ListnerEMF;
+import com.gojava6.airbnb.web.Listener.EMF;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,7 +11,7 @@ import java.util.List;
 public class CityDaoJpa implements ICityDao {
 
     public void createCity(City city) {
-        EntityManager em = ListnerEMF.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -29,7 +29,7 @@ public class CityDaoJpa implements ICityDao {
     }
 
     public void updateCity(City city) {
-        EntityManager em = ListnerEMF.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -50,7 +50,7 @@ public class CityDaoJpa implements ICityDao {
     }
 
     public void deleteCity(City city) {
-        EntityManager em = ListnerEMF.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -69,7 +69,7 @@ public class CityDaoJpa implements ICityDao {
     }
 
     public List<City> getCityList() {
-        EntityManager em = ListnerEMF.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         List<City> cityList;
         try {
             EntityTransaction tx = em.getTransaction();
@@ -89,7 +89,7 @@ public class CityDaoJpa implements ICityDao {
     }
 
     public City getCity(int cityId) {
-        EntityManager em = ListnerEMF.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         City city;
         try {
             EntityTransaction tx = em.getTransaction();
