@@ -10,7 +10,7 @@
 
     <description>ServletContextListener</description>>
     <listener>
-        <listener-class>com.gojava6.airbnb.web.PersistenceAppListener</listener-class>>
+        <listener-class>com.gojava6.airbnb.web.EMF</listener-class>>
     </listener>
 
 

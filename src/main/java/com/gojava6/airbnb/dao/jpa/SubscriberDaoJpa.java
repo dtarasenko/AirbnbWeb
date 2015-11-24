@@ -2,19 +2,16 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.ISubscriberDao;
 import com.gojava6.airbnb.model.Subscriber;
-import com.gojava6.airbnb.web.PersistenceManager;
+import com.gojava6.airbnb.web.EMF;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class SubscriberDaoJpa implements ISubscriberDao {
 
-    EntityManagerFactory emf = PersistenceManager.getInstance().getEntityManagerFactory();
-
     public void createSubscriber(Subscriber subscriber) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -32,7 +29,7 @@ public class SubscriberDaoJpa implements ISubscriberDao {
     }
 
     public void deleteSubscriber(Subscriber subscriber) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -51,7 +48,7 @@ public class SubscriberDaoJpa implements ISubscriberDao {
     }
 
     public List<Subscriber> getSubscriberList() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         List<Subscriber> subscriberList;
         try {
             EntityTransaction tx = em.getTransaction();
@@ -71,7 +68,7 @@ public class SubscriberDaoJpa implements ISubscriberDao {
     }
 
     public Subscriber getSubscriber(Integer userId) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         Subscriber subscriber;
         try {
             EntityTransaction tx = em.getTransaction();

@@ -2,19 +2,16 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.IReservationDao;
 import com.gojava6.airbnb.model.Reservation;
-import com.gojava6.airbnb.web.PersistenceManager;
+import com.gojava6.airbnb.web.EMF;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class ReservationDaoJpa implements IReservationDao {
 
-    EntityManagerFactory emf = PersistenceManager.getInstance().getEntityManagerFactory();
-
     public void createReservation(Reservation reservation) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -32,7 +29,7 @@ public class ReservationDaoJpa implements IReservationDao {
     }
 
     public void updateReservation(Reservation reservation) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -54,7 +51,7 @@ public class ReservationDaoJpa implements IReservationDao {
     }
 
     public void deleteReservation(Reservation reservation) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -73,7 +70,7 @@ public class ReservationDaoJpa implements IReservationDao {
     }
 
     public List<Reservation> getReservationList() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         List<Reservation> reservationList;
         try {
             EntityTransaction tx = em.getTransaction();
@@ -98,7 +95,7 @@ public class ReservationDaoJpa implements IReservationDao {
     }
 
     public Reservation getReservation(Integer reservationId) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         Reservation reservation;
         try {
             EntityTransaction tx = em.getTransaction();

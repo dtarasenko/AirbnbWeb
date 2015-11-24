@@ -2,19 +2,16 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.IApartmentDao;
 import com.gojava6.airbnb.model.Apartment;
-import com.gojava6.airbnb.web.PersistenceManager;
+import com.gojava6.airbnb.web.EMF;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class ApartmentDaoJPA implements IApartmentDao {
 
-    EntityManagerFactory emf = PersistenceManager.getInstance().getEntityManagerFactory();
-
     public void createApartment(Apartment apartment) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -32,7 +29,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public void updateApartment(Apartment apartment) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -56,7 +53,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public void deleteApartment(Apartment apartment) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -75,7 +72,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public List<Apartment> getApartmentList() {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         List<Apartment> apartmentList;
         try {
             EntityTransaction tx = em.getTransaction();
@@ -95,7 +92,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public Apartment getApartment(Integer apartmentId) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EMF.createEntityManager();
         Apartment apartment;
         try {
             EntityTransaction tx = em.getTransaction();
