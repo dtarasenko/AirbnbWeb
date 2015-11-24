@@ -2,7 +2,7 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.IUserDao;
 import com.gojava6.airbnb.model.User;
-import com.gojava6.airbnb.web.EMF;
+import com.gojava6.airbnb.web.ListnerEMF;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,7 +11,7 @@ import java.util.List;
 public class UserDaoJpa implements IUserDao {
 
     public void createUser(User user) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -29,7 +29,7 @@ public class UserDaoJpa implements IUserDao {
     }
 
     public void updateUser(User user) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -52,7 +52,7 @@ public class UserDaoJpa implements IUserDao {
     }
 
     public void deleteUser(User user) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -71,7 +71,7 @@ public class UserDaoJpa implements IUserDao {
     }
 
     public List<User> getUserList() {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         List<User> userList;
         try {
             EntityTransaction tx = em.getTransaction();
@@ -91,7 +91,7 @@ public class UserDaoJpa implements IUserDao {
     }
 
     public User getUser(Integer userId) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         User user;
         try {
             EntityTransaction tx = em.getTransaction();

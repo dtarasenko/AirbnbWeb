@@ -2,7 +2,7 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.IApartmentDao;
 import com.gojava6.airbnb.model.Apartment;
-import com.gojava6.airbnb.web.EMF;
+import com.gojava6.airbnb.web.ListnerEMF;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,7 +11,7 @@ import java.util.List;
 public class ApartmentDaoJPA implements IApartmentDao {
 
     public void createApartment(Apartment apartment) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -29,7 +29,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public void updateApartment(Apartment apartment) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -53,7 +53,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public void deleteApartment(Apartment apartment) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -72,7 +72,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public List<Apartment> getApartmentList() {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         List<Apartment> apartmentList;
         try {
             EntityTransaction tx = em.getTransaction();
@@ -92,7 +92,7 @@ public class ApartmentDaoJPA implements IApartmentDao {
     }
 
     public Apartment getApartment(Integer apartmentId) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         Apartment apartment;
         try {
             EntityTransaction tx = em.getTransaction();

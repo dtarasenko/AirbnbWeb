@@ -2,7 +2,7 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.ISubscriberDao;
 import com.gojava6.airbnb.model.Subscriber;
-import com.gojava6.airbnb.web.EMF;
+import com.gojava6.airbnb.web.ListnerEMF;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -11,7 +11,7 @@ import java.util.List;
 public class SubscriberDaoJpa implements ISubscriberDao {
 
     public void createSubscriber(Subscriber subscriber) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -29,7 +29,7 @@ public class SubscriberDaoJpa implements ISubscriberDao {
     }
 
     public void deleteSubscriber(Subscriber subscriber) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         try {
             EntityTransaction tx = em.getTransaction();
             try {
@@ -48,7 +48,7 @@ public class SubscriberDaoJpa implements ISubscriberDao {
     }
 
     public List<Subscriber> getSubscriberList() {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         List<Subscriber> subscriberList;
         try {
             EntityTransaction tx = em.getTransaction();
@@ -68,7 +68,7 @@ public class SubscriberDaoJpa implements ISubscriberDao {
     }
 
     public Subscriber getSubscriber(Integer userId) {
-        EntityManager em = EMF.createEntityManager();
+        EntityManager em = ListnerEMF.createEntityManager();
         Subscriber subscriber;
         try {
             EntityTransaction tx = em.getTransaction();
