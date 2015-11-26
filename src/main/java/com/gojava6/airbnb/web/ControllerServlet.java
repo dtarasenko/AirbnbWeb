@@ -24,27 +24,30 @@ public class ControllerServlet extends HttpServlet {
 
         HttpSession session = request.getSession(true);
 
-        if (userPath.equals("")) {
+        if
+//                (userPath.equals("")) {
+//
+//            ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
+//            request.setAttribute("cityList", apartmentService.getCitiesWithApartments());
+//            request.getRequestDispatcher("index.jsp").forward(request, response);
+//
+//        } else if
+//                (userPath.equals("/search")) {
+//
+//            String city = request.getParameter("city");
+//            SearchService searchService = new SearchService();
+//            searchService.filterByCity(city);
+//            request.setAttribute("apartmentList", searchService.getApartmentList());
+//            request.getRequestDispatcher(urlView).forward(request, response);
 
-            ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
-            request.setAttribute("cityList", apartmentService.getCitiesWithApartments());
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+//        } else if (userPath.equals("/admin")) {
+//
+//            request.setAttribute("h1", "Admin page");
+//            request.setAttribute("h2", "");
+//            request.getRequestDispatcher(urlView).forward(request, response);
 
-        } else if (userPath.equals("/search")) {
-
-            String city = request.getParameter("city");
-            SearchService searchService = new SearchService();
-            searchService.filterByCity(city);
-            request.setAttribute("apartmentList", searchService.getApartmentList());
-            request.getRequestDispatcher(urlView).forward(request, response);
-
-        } else if (userPath.equals("/admin")) {
-
-            request.setAttribute("h1", "Admin page");
-            request.setAttribute("h2", "");
-            request.getRequestDispatcher(urlView).forward(request, response);
-
-        } else if (userPath.equals("/adminusers")) {
+//        } else if
+                (userPath.equals("/adminusers")) {
 
             request.setAttribute("h1", "Admin page");
             request.setAttribute("h2", "");
@@ -64,10 +67,10 @@ public class ControllerServlet extends HttpServlet {
 
         } else if (userPath.equals("/contacts")) {
 
-            String hostId = request.getParameter("hostId");
-            UserService userService = (UserService) Context.getContext().getBean("userService");
-            request.setAttribute("host", userService.getUser(Integer.parseInt(hostId)));
-            request.getRequestDispatcher(urlView).forward(request, response);
+//            String hostId = request.getParameter("hostId");
+//            UserService userService = (UserService) Context.getContext().getBean("userService");
+//            request.setAttribute("host", userService.getUser(Integer.parseInt(hostId)));
+//            request.getRequestDispatcher(urlView).forward(request, response);
 
         } else if (userPath.equals("/logout")) {
 

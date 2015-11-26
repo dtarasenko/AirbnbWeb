@@ -73,7 +73,7 @@
 		</div>
 	</div>
 
-	<script src="js/wow.min.js"></script>
+	<script src="<c:url value="/resources/js/wow.min.js" />"></script>
 	<script>
 	 wow = new WOW(
 	  {

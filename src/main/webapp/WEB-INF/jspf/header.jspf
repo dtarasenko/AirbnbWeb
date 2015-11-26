@@ -6,11 +6,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>airbnb</title>
-	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/animate.css">
+	<script src="<c:url value="/resources/js/jquery-1.11.0.min.js" />"></script>
+    <script src="<c:url value="/resources/js/jquery.leanModal.min.js" />"></script>
+	<link rel="stylesheet" href="<c:url value="/resources/css/reset.css" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />">
+	<link rel="stylesheet" href="<c:url value="/resources/css/animate.css" />">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 	
 		<div class="superheader">
 			<a href="/AirbnbWeb/">
-				<img src="img/airbnb-white.png" class="airbnblogo">
+				<img src="<c:url value="/resources/img/airbnb-white.png" />" class="airbnblogo">
 			</a>
 			<ul class="menu">
 				<li><a id="trigger_popup_become_host" href="#modal">Become a Host</a></li>
