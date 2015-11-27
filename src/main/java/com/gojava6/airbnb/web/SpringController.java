@@ -1,6 +1,7 @@
 package com.gojava6.airbnb.web;
 
 
+import com.gojava6.airbnb.model.UserType;
 import com.gojava6.airbnb.service.ApartmentService;
 import com.gojava6.airbnb.service.SearchService;
 import com.gojava6.airbnb.service.UserService;
@@ -10,6 +11,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class SpringController {
@@ -43,5 +46,28 @@ public class SpringController {
         return "admin";
     }
 
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public String addUser(@RequestParam("name")String name,
+                          @RequestParam("surname")String surname,
+                          @RequestParam("email")String email,
+                          @RequestParam("password")String password) {
+        UserService userService = (UserService) Context.getContext().getBean("userService");
+        userService.createUser(name, surname, email, UserType.CLIENT, password);
+        return "redirect:";
+    }
 
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@RequestParam("email")String email,
+                        @RequestParam("password")String password,
+                        HttpServletRequest request) {
+        request.getSession().setAttribute("logged-in", "true");
+        request.getSession().setAttribute("email", email);
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) {
+        request.getSession().setAttribute("logged-in", "false");
+        return "redirect:";
+    }
 }

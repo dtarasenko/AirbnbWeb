@@ -74,8 +74,8 @@ public class ControllerServlet extends HttpServlet {
 
         } else if (userPath.equals("/logout")) {
 
-            session.setAttribute("logged-in", "false");
-            request.getRequestDispatcher("/").forward(request, response);
+//            session.setAttribute("logged-in", "false");
+//            request.getRequestDispatcher("/").forward(request, response);
 
         }
     }
@@ -87,21 +87,21 @@ public class ControllerServlet extends HttpServlet {
 
         if (userPath.equals("/signup")) {
 
-            String name = request.getParameter("name");
-            String surname = request.getParameter("surname");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            UserService userService = (UserService) Context.getContext().getBean("userService");
-            userService.createUser(name, surname, email, UserType.CLIENT, password);
-            response.sendRedirect("http://localhost:8080/AirbnbWeb/");
+//            String name = request.getParameter("name");
+//            String surname = request.getParameter("surname");
+//            String email = request.getParameter("email");
+//            String password = request.getParameter("password");
+//            UserService userService = (UserService) Context.getContext().getBean("userService");
+//            userService.createUser(name, surname, email, UserType.CLIENT, password);
+//            response.sendRedirect("http://localhost:8080/AirbnbWeb/");
 
         } else if (userPath.equals("/login")) {
 
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            session.setAttribute("logged-in", "true");
-            session.setAttribute("email", email);
-            response.sendRedirect("http://localhost:8080/AirbnbWeb/");
+//            String email = request.getParameter("email");
+//            String password = request.getParameter("password");
+//            session.setAttribute("logged-in", "true");
+//            session.setAttribute("email", email);
+//            response.sendRedirect("http://localhost:8080/AirbnbWeb/");
 
         } else if (userPath.equals("/addapartment")) {
 
