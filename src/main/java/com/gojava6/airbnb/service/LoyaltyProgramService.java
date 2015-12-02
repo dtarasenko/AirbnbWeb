@@ -5,7 +5,7 @@ import com.gojava6.airbnb.model.Subscriber;
 import com.gojava6.airbnb.model.User;
 import com.gojava6.airbnb.observer.Observer;
 import com.gojava6.airbnb.observer.Subject;
-import com.gojava6.airbnb.web.Listener.Context;
+import com.gojava6.airbnb.web.listener.Context;
 
 import java.util.List;
 

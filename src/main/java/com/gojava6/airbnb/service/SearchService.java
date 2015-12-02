@@ -1,7 +1,7 @@
 package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.model.Apartment;
-import com.gojava6.airbnb.web.Listener.Context;
+import com.gojava6.airbnb.web.listener.Context;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,7 +28,7 @@ public class SearchService {
     }
 
     public void filterByCity(String city) {
-        List<Apartment> list = new ArrayList<Apartment>();
+        List<Apartment> list = new ArrayList<>();
         for (Apartment apartment : apartmentList) {
             String cityName = apartment.getCity().getCityName();
             if (cityName.equals(city)) {
@@ -40,7 +40,7 @@ public class SearchService {
 
     public void filterByApartmentType(String place, String room, String apartment) {
 
-        List<Apartment> list = new ArrayList<Apartment>();
+        List<Apartment> list = new ArrayList<>();
 
         for (Apartment ap : apartmentList) {
 
@@ -63,7 +63,7 @@ public class SearchService {
         long start = startDate.getTime();
         long end = endDate.getTime();
 
-        List<Apartment> list = new ArrayList<Apartment>();
+        List<Apartment> list = new ArrayList<>();
 
         for (Apartment apartment : apartmentList) {
             if (apartmentService.isAvailable(apartment, start, end)) {

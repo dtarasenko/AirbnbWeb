@@ -2,7 +2,7 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.IUserDao;
 import com.gojava6.airbnb.model.User;
-import com.gojava6.airbnb.web.Listener.EMF;
+import com.gojava6.airbnb.web.listener.EMF;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

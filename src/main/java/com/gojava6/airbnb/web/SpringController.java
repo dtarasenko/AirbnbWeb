@@ -1,11 +1,12 @@
 package com.gojava6.airbnb.web;
 
 
+import com.gojava6.airbnb.model.ApartmentType;
 import com.gojava6.airbnb.model.UserType;
 import com.gojava6.airbnb.service.ApartmentService;
 import com.gojava6.airbnb.service.SearchService;
 import com.gojava6.airbnb.service.UserService;
-import com.gojava6.airbnb.web.Listener.Context;
+import com.gojava6.airbnb.web.listener.Context;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class SpringController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/")
     public String printIndex(ModelMap model) {
         ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
         model.addAttribute("cityList", apartmentService.getCitiesWithApartments());
@@ -70,4 +71,20 @@ public class SpringController {
         request.getSession().setAttribute("logged-in", "false");
         return "redirect:";
     }
+
+
+    @RequestMapping(value = "/addapartment", method = RequestMethod.POST)
+    public String addApartment(@RequestParam("description")String description,
+                               @RequestParam("apartment_type")int type,
+                               @RequestParam("number_of_guests")int numberOfGuests,
+                               @RequestParam("price")int price,
+                               @RequestParam("city")String city,
+                               HttpServletRequest request) {
+        ApartmentType apartmentType = ApartmentType.values()[type];
+        String email = (String)request.getSession().getAttribute("email");
+        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
+        apartmentService.createApartment(description, apartmentType, numberOfGuests, price, email, city);
+        return "redirect:";
+    }
+
 }

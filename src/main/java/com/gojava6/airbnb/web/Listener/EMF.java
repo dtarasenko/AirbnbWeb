@@ -1,4 +1,4 @@
-package com.gojava6.airbnb.web.Listener;
+package com.gojava6.airbnb.web.listener;
 
 import javax.persistence.Persistence;
 import javax.persistence.EntityManagerFactory;

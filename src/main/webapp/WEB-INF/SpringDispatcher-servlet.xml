@@ -20,4 +20,16 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:annotation-driven />
 
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean class="com.gojava6.airbnb.web.interseptor.LoginInterseptor" />
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/login"/>
+            <bean class="com.gojava6.airbnb.web.interseptor.SignupInterseptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

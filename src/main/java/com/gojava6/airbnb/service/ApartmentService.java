@@ -2,7 +2,7 @@ package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.dao.IApartmentDao;
 import com.gojava6.airbnb.model.*;
-import com.gojava6.airbnb.web.Listener.Context;
+import com.gojava6.airbnb.web.listener.Context;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,7 +17,7 @@ public class ApartmentService {
     }
 
     public Set<City> getCitiesWithApartments() {
-        Set<City> citySet = new HashSet<City>();
+        Set<City> citySet = new HashSet<>();
         for (Apartment apartment : getApartmentList()) {
             citySet.add(apartment.getCity());
         }
