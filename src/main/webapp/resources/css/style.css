@@ -265,6 +265,23 @@ footer {
 	line-height: 25px;
 }
 
+table {
+	width: 100%;
+}
+
+table thead tr {
+	text-align: center;
+}
+
+table thead td {
+	background-color: #999;
+}
+
+table td, th {
+	border: 1px solid black;
+	padding: 0.5rem;
+}
+
 /*--------------------------------------------------------------*/
 /***************** 			FOOTER 		  ***********************/
 /*--------------------------------------------------------------*/

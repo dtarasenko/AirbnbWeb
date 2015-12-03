@@ -1,18 +1,29 @@
-<%@ page import="org.springframework.context.ApplicationContext" %>
-<%@ page import="org.springframework.context.support.ClassPathXmlApplicationContext" %>
-<%@ page import="java.util.List"%>
-
-<%@ page import="com.gojava6.airbnb.services.ReservationService"%>
-<%@ page import="com.gojava6.airbnb.model.Reservation"%>
-
 <section>
-    <%
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        ReservationService reservationService = (ReservationService) context.getBean("reservationService");
-        List<Reservation> reservationList = reservationService.getReservationList();
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Start date</td>
+                <td>End date</td>
+                <td>User id</td>
+                <td>Apartment id</td>
+            </tr>
+        </thead>
+        <tbody>
 
-         for (Reservation reservation : reservationList) {
-    %>
-        <p><%= reservation.toString() %></p>
-    <% } %>
+        <c:forEach var="reservation" items="${reservationList}">
+
+            <tr>
+                <td>${reservation.getReservationId()}</td>
+                <td>${reservation.getStart()}</td>
+                <td>${reservation.getEnd()}</td>
+                <td>${reservation.getUser().getUserId()}</td>
+                <td>${reservation.getApartment().getApartmentId()}</td>
+
+            </tr>
+
+        </c:forEach>
+
+        </tbody>
+    </table>
 </section>

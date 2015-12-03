@@ -7,22 +7,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginInterseptor implements HandlerInterceptor {
+public class AdminInterseptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        if (httpServletRequest.getRequestURI().equals("/AirbnbWeb/contacts") ||
-                httpServletRequest.getRequestURI().equals("/AirbnbWeb/addapartment")) {
+        if (httpServletRequest.getRequestURI().equals("/AirbnbWeb/admin")) {
             HttpSession session = httpServletRequest.getSession(false);
-            String logged = (String) session.getAttribute("logged-in");
-            if (logged == null || logged.equals("false")) {
-                httpServletRequest.setAttribute("h1", "Please log in to continue");
+            String email = (String) session.getAttribute("email");
+            String password = (String) session.getAttribute("password");
+            if (email.equals("admin@admin.com") || password.equals("admin")) {
+                httpServletRequest.setAttribute("h1", "Admin");
                 httpServletRequest.setAttribute("h2", "");
-                httpServletRequest.getRequestDispatcher("/").forward(httpServletRequest, httpServletResponse);
-                return false;
+                return true;
             }
         }
-        return true;
+        httpServletRequest.setAttribute("h1", "Please log in to continue as admin");
+        httpServletRequest.setAttribute("h2", "");
+        httpServletRequest.getRequestDispatcher("/").forward(httpServletRequest, httpServletResponse);
+        return false;
     }
 
     @Override

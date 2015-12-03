@@ -4,6 +4,7 @@ package com.gojava6.airbnb.web;
 import com.gojava6.airbnb.model.ApartmentType;
 import com.gojava6.airbnb.model.UserType;
 import com.gojava6.airbnb.service.ApartmentService;
+import com.gojava6.airbnb.service.ReservationService;
 import com.gojava6.airbnb.service.SearchService;
 import com.gojava6.airbnb.service.UserService;
 import com.gojava6.airbnb.web.listener.Context;
@@ -87,4 +88,25 @@ public class SpringController {
         return "redirect:";
     }
 
+    @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
+    public String printUsers(ModelMap model) {
+        UserService userService = (UserService) Context.getContext().getBean("userService");
+        model.addAttribute("userList", userService.getUserList());
+        return "adminusers";
+
+    }
+
+    @RequestMapping(value = "/admin/apartments", method = RequestMethod.GET)
+    public String printApartments(ModelMap model) {
+        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
+        model.addAttribute("apartmentList", apartmentService.getApartmentList());
+        return "adminapartments";
+    }
+
+    @RequestMapping(value = "/admin/reservations", method = RequestMethod.GET)
+    public String printReservations(ModelMap model) {
+        ReservationService reservationService = (ReservationService) Context.getContext().getBean("reservationService");
+        model.addAttribute("reservationList", reservationService.getReservationList());
+        return "adminreservations";
+    }
 }

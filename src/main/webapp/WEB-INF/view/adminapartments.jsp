@@ -1,18 +1,32 @@
-<%@ page import="org.springframework.context.ApplicationContext" %>
-<%@ page import="org.springframework.context.support.ClassPathXmlApplicationContext" %>
-<%@ page import="java.util.List"%>
+<section>
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Description</td>
+                <td>Type</td>
+                <td>Number of guests</td>
+                <td>Price</td>
+                <td>User id</td>
+                <td>City id</td>
+            </tr>
+        </thead>
+        <tbody>
 
-<%@ page import="com.gojava6.airbnb.services.ApartmentService"%>
-<%@ page import="com.gojava6.airbnb.model.Apartment"%>
+        <c:forEach var="apartment" items="${apartmentList}">
 
-    <section>
-        <%
-            ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-            ApartmentService apartmentService = (ApartmentService) context.getBean("apartmentService");
-            List<Apartment> apartmentList = apartmentService.getApartmentList();
+            <tr>
+                <td>${apartment.getApartmentId()}</td>
+                <td>${apartment.getApartmentDescription()}</td>
+                <td>${apartment.getApartmentType()}</td>
+                <td>${apartment.getNumberOfGuests()}</td>
+                <td>${apartment.getPrice()}</td>
+                <td>${apartment.getUser().getUserId()}</td>
+                <td>${apartment.getCity().getCityId()}</td>
+            </tr>
 
-             for (Apartment apartment : apartmentList) {
-        %>
-            <p><%= apartment.toString() %></p>
-        <% } %>
-    </section>
+        </c:forEach>
+
+        </tbody>
+    </table>
+</section>

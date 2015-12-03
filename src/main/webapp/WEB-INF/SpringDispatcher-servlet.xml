@@ -30,6 +30,12 @@
             <mvc:mapping path="/login"/>
             <bean class="com.gojava6.airbnb.web.interseptor.SignupInterseptor" />
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin"/>
+            <bean class="com.gojava6.airbnb.web.interseptor.AdminInterseptor" />
+        </mvc:interceptor>
     </mvc:interceptors>
+
+
 
 </beans>

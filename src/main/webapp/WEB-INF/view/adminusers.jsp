@@ -1,18 +1,30 @@
-<%@ page import="org.springframework.context.ApplicationContext" %>
-<%@ page import="org.springframework.context.support.ClassPathXmlApplicationContext" %>
-<%@ page import="java.util.List"%>
-
-<%@ page import="com.gojava6.airbnb.services.UserService"%>
-<%@ page import="com.gojava6.airbnb.model.User"%>
-
 <section>
-    <%
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        UserService userService = (UserService) context.getBean("userService");
-        List<User> userList = userService.getUserList();
+    <table>
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Type</td>
+                <td>Name</td>
+                <td>Surname</td>
+                <td>Email</td>
+                <td>Password</td>
+            </tr>
+        </thead>
+        <tbody>
 
-        for (User user : userList) {
-    %>
-        <p><%= user.toString() %></p>
-    <% } %>
+        <c:forEach var="user" items="${userList}">
+
+            <tr>
+                <td>${user.getUserId()}</td>
+                <td>${user.getUserType()}</td>
+                <td>${user.getName()}</td>
+                <td>${user.getSurname()}</td>
+                <td>${user.getEmail()}</td>
+                <td>${user.getPassword()}</td>
+            </tr>
+
+        </c:forEach>
+
+        </tbody>
+    </table>
 </section>
