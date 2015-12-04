@@ -27,9 +27,28 @@ public class SpringController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String printSearch(ModelMap model, @RequestParam("city")String city) {
+    public String printSearch(ModelMap model,
+                              @RequestParam("city")String city) {
         SearchService searchService = new SearchService();
         searchService.filterByCity(city);
+        model.addAttribute("apartmentList", searchService.getApartmentList());
+        return "search";
+    }
+
+    @RequestMapping(value = "/advancedsearch", method = RequestMethod.GET)
+    public String printAdvancedSearch(ModelMap model,
+                              @RequestParam("city")String city,
+                              @RequestParam("number_of_guests")Integer numberOfGuests,
+                              @RequestParam("apartment_type")String apartmentType
+//                              @RequestParam("date_start")String start,
+//                              @RequestParam("date_end")String end,
+
+//
+    ) {
+        SearchService searchService = new SearchService();
+        searchService.filterByCity(city);
+        searchService.filterByNumberOfGuests(numberOfGuests);
+        searchService.filterByApartmentType(apartmentType);
         model.addAttribute("apartmentList", searchService.getApartmentList());
         return "search";
     }

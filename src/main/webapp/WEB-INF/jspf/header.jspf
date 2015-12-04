@@ -39,18 +39,29 @@
 			<h1><c:out value="${h1}" default="WELCOME HOME"/></h1>
 			<h2><c:out value="${h2}" default="Rent unique places to stay from local hosts in 190+ countries"/></h2>
 
-			<form>
+			<form action="advancedsearch" method="GET">
 				<fieldset>
-					<label><input type="text" name="city" placeholder="Where do you want to go?" autofocus size="50"
+					<label><input type="text" name="city" placeholder="Where do you want to go?" autofocus size="38"
 						maxlength="20" required></label>
-					<label><input id="input_calendar" type="date" name="start" required></label>
-					<label><input id="input_calendar" type="date" name="end" required></label>
+					<label><input type="date" name="date_start"></label>
+					<label><input type="date" name="date_start"></label>
 
-					<select name="sel">
-						<option value="BMW">place</option>
-						<option value="Tesla">room</option>
-						<option value="Toyota">apartment</option>
-					</select>
+
+                    <select name="number_of_guests">
+                        <option value="0" selected>Accommodates</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <select name="apartment_type">
+                        <option value="blank" selected>Home Type</option>
+                        <option value="place">place</option>
+                        <option value="room">room</option>
+                        <option value="apartment">apartment</option>
+                    </select>
 
 
 					<button type="submit" >Search</button>
