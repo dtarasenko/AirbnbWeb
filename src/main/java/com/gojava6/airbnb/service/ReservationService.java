@@ -1,7 +1,9 @@
 package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.dao.IReservationDao;
+import com.gojava6.airbnb.model.Apartment;
 import com.gojava6.airbnb.model.Reservation;
+import com.gojava6.airbnb.model.User;
 
 import java.util.Date;
 import java.util.List;
@@ -14,12 +16,12 @@ public class ReservationService {
         this.iReservationDao = iReservationDao;
     }
 
-    public void createReservation(int apartmentId, int userId, Date start, Date end) {
+    public void createReservation(Date start, Date end, User user, Apartment apartment) {
         Reservation reservation = new Reservation();
-//        reservation.setApartmentId(apartmentId);
-//        reservation.setUserId(userId);
         reservation.setStart(start.getTime());
         reservation.setEnd(end.getTime());
+        reservation.setUser(user);
+        reservation.setApartment(apartment);
 
         iReservationDao.createReservation(reservation);
     }
@@ -45,14 +47,6 @@ public class ReservationService {
 
     public Reservation getReservation(int reservationId) {
         return iReservationDao.getReservation(reservationId);
-    }
-
-    public void printAllReservations(){
-        List<Reservation> reservationList = getReservationList();
-
-        for (Reservation reservation : reservationList) {
-            System.out.println(reservation.toString());
-        }
     }
 
 }

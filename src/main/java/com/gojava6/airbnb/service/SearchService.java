@@ -4,6 +4,8 @@ import com.gojava6.airbnb.model.Apartment;
 import com.gojava6.airbnb.model.ApartmentType;
 import com.gojava6.airbnb.web.listener.Context;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,20 +34,31 @@ public class SearchService {
         apartmentList = list;
     }
 
-    public void filterByDates(Date startDate, Date endDate){
-        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
+    public void filterByDates(String startDate, String endDate){
+        if (!startDate.equals("") && !endDate.equals("")) {
+            List<Apartment> list = new ArrayList<>();
 
-        long start = startDate.getTime();
-        long end = endDate.getTime();
-
-        List<Apartment> list = new ArrayList<>();
-
-        for (Apartment apartment : apartmentList) {
-            if (apartmentService.isAvailable(apartment, start, end)) {
-                list.add(apartment);
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+            Date startDateFormat = null;
+            Date endDateFormat = null;
+            try {
+                startDateFormat = format.parse(startDate);
+                endDateFormat = format.parse(endDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+            long startLongFormat = startDateFormat.getTime();
+            long endLongFormat = endDateFormat.getTime();
+
+            ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
+
+            for (Apartment apartment : apartmentList) {
+                if (apartmentService.isAvailable(apartment, startLongFormat, endLongFormat)) {
+                    list.add(apartment);
+                }
+            }
+            apartmentList = list;
         }
-        apartmentList = list;
     }
 
     public void filterByNumberOfGuests(Integer numberOfGuests) {

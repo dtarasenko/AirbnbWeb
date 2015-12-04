@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 public class SpringController {
 
@@ -38,15 +42,13 @@ public class SpringController {
     @RequestMapping(value = "/advancedsearch", method = RequestMethod.GET)
     public String printAdvancedSearch(ModelMap model,
                               @RequestParam("city")String city,
+                              @RequestParam("date_start")String startDate,
+                              @RequestParam("date_end")String endDate,
                               @RequestParam("number_of_guests")Integer numberOfGuests,
-                              @RequestParam("apartment_type")String apartmentType
-//                              @RequestParam("date_start")String start,
-//                              @RequestParam("date_end")String end,
-
-//
-    ) {
+                              @RequestParam("apartment_type")String apartmentType) {
         SearchService searchService = new SearchService();
         searchService.filterByCity(city);
+        searchService.filterByDates(startDate,endDate);
         searchService.filterByNumberOfGuests(numberOfGuests);
         searchService.filterByApartmentType(apartmentType);
         model.addAttribute("apartmentList", searchService.getApartmentList());
