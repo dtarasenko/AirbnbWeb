@@ -1,7 +1,7 @@
 package com.gojava6.airbnb.web.interseptor;
 
 import com.gojava6.airbnb.service.UserService;
-import com.gojava6.airbnb.web.listene.Context;
+import com.gojava6.airbnb.web.listener.Context;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

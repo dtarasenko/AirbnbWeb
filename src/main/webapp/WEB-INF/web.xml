@@ -18,10 +18,10 @@
     </jsp-config>
 
     <listener>
-        <listener-class>com.gojava6.airbnb.web.listene.EMF</listener-class>>
+        <listener-class>com.gojava6.airbnb.web.listener.EMF</listener-class>>
     </listener>
     <listener>
-        <listener-class>com.gojava6.airbnb.web.listene.Context</listener-class>>
+        <listener-class>com.gojava6.airbnb.web.listener.Context</listener-class>>
     </listener>
 
     <servlet>

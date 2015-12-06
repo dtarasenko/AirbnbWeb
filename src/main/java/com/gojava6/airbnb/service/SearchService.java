@@ -1,7 +1,7 @@
 package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.model.Apartment;
-import com.gojava6.airbnb.web.listene.Context;
+import com.gojava6.airbnb.web.listener.Context;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
