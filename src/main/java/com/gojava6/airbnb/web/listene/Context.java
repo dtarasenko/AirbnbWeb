@@ -1,4 +1,4 @@
-package com.gojava6.airbnb.web.listener;
+package com.gojava6.airbnb.web.listene;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

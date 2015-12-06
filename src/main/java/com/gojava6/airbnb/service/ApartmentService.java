@@ -2,7 +2,7 @@ package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.dao.IApartmentDao;
 import com.gojava6.airbnb.model.*;
-import com.gojava6.airbnb.web.listener.Context;
+import com.gojava6.airbnb.web.listene.Context;
 
 import java.util.HashSet;
 import java.util.List;

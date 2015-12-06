@@ -7,7 +7,7 @@ import com.gojava6.airbnb.service.ApartmentService;
 import com.gojava6.airbnb.service.ReservationService;
 import com.gojava6.airbnb.service.SearchService;
 import com.gojava6.airbnb.service.UserService;
-import com.gojava6.airbnb.web.listener.Context;
+import com.gojava6.airbnb.web.listene.Context;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
