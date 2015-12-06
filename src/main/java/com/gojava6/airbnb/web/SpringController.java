@@ -1,7 +1,9 @@
 package com.gojava6.airbnb.web;
 
 
+import com.gojava6.airbnb.model.Apartment;
 import com.gojava6.airbnb.model.ApartmentType;
+import com.gojava6.airbnb.model.User;
 import com.gojava6.airbnb.model.UserType;
 import com.gojava6.airbnb.service.ApartmentService;
 import com.gojava6.airbnb.service.ReservationService;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class SpringController {
@@ -48,13 +53,20 @@ public class SpringController {
         searchService.filterByNumberOfGuests(numberOfGuests);
         searchService.filterByApartmentType(apartmentType);
         model.addAttribute("apartmentList", searchService.getApartmentList());
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
         return "search";
     }
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
-    public String printContacts(ModelMap model, @RequestParam("hostId")int hostId) {
-        UserService userService = (UserService) Context.getContext().getBean("userService");
-        model.addAttribute("host", userService.getUser(hostId));
+    public String printContacts(ModelMap model,
+                                @RequestParam("apartmentId")int apartmentId,
+                                @RequestParam("startDate")String startDate,
+                                @RequestParam("endDate")String endDate) {
+        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
+        model.addAttribute("apartment", apartmentService.getApartment(apartmentId));
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
         return "contacts";
     }
 
@@ -125,5 +137,29 @@ public class SpringController {
         ReservationService reservationService = (ReservationService) Context.getContext().getBean("reservationService");
         model.addAttribute("reservationList", reservationService.getReservationList());
         return "adminreservations";
+    }
+
+    @RequestMapping(value = "/reservation", method = RequestMethod.GET)
+    public String makeReservation(@RequestParam("apartmentId")int apartmentId,
+                                  @RequestParam("startDate")String startDate,
+                                  @RequestParam("endDate")String endDate,
+                                  HttpServletRequest request) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+        Date startDateFormat = null;
+        Date endDateFormat = null;
+        try {
+            startDateFormat = format.parse(startDate);
+            endDateFormat = format.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String email = (String) request.getSession().getAttribute("email");
+        UserService userService = (UserService) Context.getContext().getBean("userService");
+        User user = userService.findUserByEmail(email);
+        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
+        Apartment apartment = apartmentService.getApartment(apartmentId);
+        ReservationService reservationService = (ReservationService) Context.getContext().getBean("reservationService");
+        reservationService.createReservation(startDateFormat, endDateFormat, user, apartment);
+        return "redirect:";
     }
 }

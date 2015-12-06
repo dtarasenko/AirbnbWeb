@@ -2,7 +2,7 @@
 		<div class="apartmentBlocks">
 			<c:forEach var="apartment" items="${apartmentList}">
 				<div class="apartmentBlock fadeIn">
-					<a href="contacts?hostId=${apartment.getUser().getUserId()}">
+					<a href="contacts?apartmentId=${apartment.getApartmentId()}&startDate=${startDate}&endDate=${endDate}">
 						<h3>${apartment.getApartmentDescription()}</h3>
 						<p>City: ${apartment.getCity().getCityName()}</p>
 						<p>Guests: ${apartment.getNumberOfGuests()}</p>
