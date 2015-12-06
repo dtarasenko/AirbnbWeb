@@ -1,8 +1,6 @@
 package com.gojava6.airbnb.model;
 
-import java.util.Date;
-import java.text.SimpleDateFormat;
-
+import java.sql.Date;
 import javax.persistence.*;
 
 @Entity
@@ -15,10 +13,10 @@ public class Reservation {
     private int reservationId;
 
     @Column(name = "start")
-    private long start;
+    private Date start;
 
     @Column(name = "end")
-    private long end;
+    private Date end;
 
     @ManyToOne
     private User user;
@@ -34,19 +32,19 @@ public class Reservation {
         this.reservationId = reservationId;
     }
 
-    public long getStart() {
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(long start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 
-    public long getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(long end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 
@@ -66,21 +64,4 @@ public class Reservation {
         this.apartment = apartment;
     }
 
-    @Override
-    public String toString() {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date start = new Date(this.start);
-        Date end = new Date(this.end);
-        String stringStart = sdf.format(start);
-        String stringEnd = sdf.format(end);
-
-        return "Reservation{" +
-                "apartment=" + apartment +
-                ", reservationId=" + reservationId +
-                ", start=" + start +
-                ", end=" + end +
-                ", user=" + user +
-                '}';
-    }
 }

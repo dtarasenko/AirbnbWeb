@@ -5,7 +5,7 @@ import com.gojava6.airbnb.model.Apartment;
 import com.gojava6.airbnb.model.Reservation;
 import com.gojava6.airbnb.model.User;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public class ReservationService {
@@ -18,8 +18,8 @@ public class ReservationService {
 
     public void createReservation(Date start, Date end, User user, Apartment apartment) {
         Reservation reservation = new Reservation();
-        reservation.setStart(start.getTime());
-        reservation.setEnd(end.getTime());
+        reservation.setStart(start);
+        reservation.setEnd(end);
         reservation.setUser(user);
         reservation.setApartment(apartment);
 
@@ -28,8 +28,8 @@ public class ReservationService {
 
     public void updateReservationDates(int reservationId, Date start, Date end) {
         Reservation reservation = iReservationDao.getReservation(reservationId);
-        reservation.setStart(start.getTime());
-        reservation.setEnd(end.getTime());
+        reservation.setStart(start);
+        reservation.setEnd(end);
         iReservationDao.updateReservation(reservation);
     }
 

@@ -6,8 +6,9 @@ import com.gojava6.airbnb.web.listener.Context;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import java.sql.Date;
 
 public class SearchService {
 
@@ -37,22 +38,23 @@ public class SearchService {
         if (!startDate.equals("") && !endDate.equals("")) {
             List<Apartment> list = new ArrayList<>();
 
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-            Date startDateFormat = null;
-            Date endDateFormat = null;
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date startDateFormat = null;
+            java.util.Date endDateFormat = null;
             try {
                 startDateFormat = format.parse(startDate);
                 endDateFormat = format.parse(endDate);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            long startLongFormat = startDateFormat.getTime();
-            long endLongFormat = endDateFormat.getTime();
+
+            java.sql.Date startSqlFormat = new java.sql.Date(startDateFormat.getTime());
+            java.sql.Date endSqlFormat = new java.sql.Date(endDateFormat.getTime());
 
             ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
 
             for (Apartment apartment : apartmentList) {
-                if (apartmentService.isAvailable(apartment, startLongFormat, endLongFormat)) {
+                if (apartmentService.isAvailable(apartment, startSqlFormat, endSqlFormat)) {
                     list.add(apartment);
                 }
             }

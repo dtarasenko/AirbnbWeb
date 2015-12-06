@@ -10,8 +10,8 @@ import java.sql.SQLException;
 public class MainSqlScriptRunner {
 
     private static final String url = "jdbc:mysql://localhost:3306/";
-    private static final String user = "javauser";
-    private static final String password = "javadude";
+    private static final String user = "root";
+    private static final String password = "root";
 
 
     public static void main(String[] args) {

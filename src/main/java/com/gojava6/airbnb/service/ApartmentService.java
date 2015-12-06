@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import java.sql.Date;
+
 public class ApartmentService {
 
     IApartmentDao iApartmentDao;
@@ -24,15 +26,15 @@ public class ApartmentService {
         return citySet;
     }
 
-    public boolean isAvailable(Apartment apartment, long start, long end) {
+    public boolean isAvailable(Apartment apartment, Date start, Date end) {
         List<Reservation> reservationList = apartment.getReservationList();
 
         if (reservationList.isEmpty()) {
             return true;
         } else {
             for (Reservation rd : reservationList) {
-                if (!(start < rd.getStart() && end < rd.getStart()) &&
-                        !(start > rd.getEnd() && end > rd.getEnd())) {
+                if (!(start.getTime() < rd.getStart().getTime() && end.getTime() < rd.getStart().getTime()) &&
+                        !(start.getTime() > rd.getEnd().getTime() && end.getTime() > rd.getEnd().getTime())) {
                     return false;
                 }
             }

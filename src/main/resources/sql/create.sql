@@ -12,7 +12,7 @@ DROP SCHEMA IF EXISTS `airbnb` ;
 -- -----------------------------------------------------
 -- Schema airbnb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `airbnb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+CREATE SCHEMA IF NOT EXISTS `airbnb` DEFAULT CHARACTER SET utf8 ;
 USE `airbnb` ;
 
 -- -----------------------------------------------------
@@ -21,13 +21,13 @@ USE `airbnb` ;
 DROP TABLE IF EXISTS `airbnb`.`user` ;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`user` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
-  `type` ENUM('client', 'host') NOT NULL COMMENT '',
-  `name` VARCHAR(45) NOT NULL COMMENT '',
-  `surname` VARCHAR(45) NOT NULL COMMENT '',
-  `email` VARCHAR(45) NOT NULL COMMENT '',
-  `password` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` ENUM('client', 'host') NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `surname` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -37,11 +37,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `airbnb`.`city` ;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`city` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
-  `name` VARCHAR(45) NOT NULL COMMENT '',
-  `url` VARCHAR(200) NOT NULL COMMENT '',
-  `img_name` VARCHAR(45) NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `url` VARCHAR(200) NOT NULL,
+  `img_name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -51,16 +51,16 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `airbnb`.`apartment` ;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`apartment` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
-  `apartment_description` VARCHAR(100) NOT NULL COMMENT '',
-  `type` ENUM('place', 'room', 'apartment') NOT NULL COMMENT '',
-  `number_of_guests` INT NOT NULL COMMENT '',
-  `price` INT NOT NULL COMMENT '',
-  `user_id` INT UNSIGNED NOT NULL COMMENT '',
-  `city_id` INT UNSIGNED NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_apartment_user1_idx` (`user_id` ASC)  COMMENT '',
-  INDEX `fk_apartment_city1_idx` (`city_id` ASC)  COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `apartment_description` VARCHAR(100) NOT NULL,
+  `type` ENUM('place', 'room', 'apartment') NOT NULL,
+  `number_of_guests` INT NOT NULL,
+  `price` INT NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  `city_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_apartment_user1_idx` (`user_id` ASC),
+  INDEX `fk_apartment_city1_idx` (`city_id` ASC),
   CONSTRAINT `fk_apartment_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `airbnb`.`user` (`id`)
@@ -80,14 +80,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `airbnb`.`reservation` ;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`reservation` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '',
-  `start` BIGINT(20) NOT NULL COMMENT '',
-  `end` BIGINT(20) NOT NULL COMMENT '',
-  `apartment_id` INT UNSIGNED NOT NULL COMMENT '',
-  `user_id` INT UNSIGNED NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '',
-  INDEX `fk_reservation_apartment1_idx` (`apartment_id` ASC)  COMMENT '',
-  INDEX `fk_reservation_user1_idx` (`user_id` ASC)  COMMENT '',
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `start` DATE NOT NULL,
+  `end` DATE NOT NULL,
+  `apartment_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_reservation_apartment1_idx` (`apartment_id` ASC),
+  INDEX `fk_reservation_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_reservation_apartment1`
     FOREIGN KEY (`apartment_id`)
     REFERENCES `airbnb`.`apartment` (`id`)
@@ -107,8 +107,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `airbnb`.`subscriber` ;
 
 CREATE TABLE IF NOT EXISTS `airbnb`.`subscriber` (
-  `user_id` INT UNSIGNED NOT NULL COMMENT '',
-  PRIMARY KEY (`user_id`)  COMMENT '',
+  `user_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`user_id`),
   CONSTRAINT `fk_subscriber_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `airbnb`.`user` (`id`)

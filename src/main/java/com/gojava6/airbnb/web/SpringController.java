@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 @Controller
 public class SpringController {
@@ -144,22 +144,24 @@ public class SpringController {
                                   @RequestParam("startDate")String startDate,
                                   @RequestParam("endDate")String endDate,
                                   HttpServletRequest request) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-        Date startDateFormat = null;
-        Date endDateFormat = null;
+        java.util.Date startDateFormat = null;
+        java.util.Date endDateFormat = null;
         try {
-            startDateFormat = format.parse(startDate);
-            endDateFormat = format.parse(endDate);
+            startDateFormat = new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            endDateFormat = new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        java.sql.Date startSqlFormat = new java.sql.Date(startDateFormat.getTime());
+        java.sql.Date endtSqlFormat = new java.sql.Date(endDateFormat.getTime());
+
         String email = (String) request.getSession().getAttribute("email");
         UserService userService = (UserService) Context.getContext().getBean("userService");
         User user = userService.findUserByEmail(email);
         ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
         Apartment apartment = apartmentService.getApartment(apartmentId);
         ReservationService reservationService = (ReservationService) Context.getContext().getBean("reservationService");
-        reservationService.createReservation(startDateFormat, endDateFormat, user, apartment);
+        reservationService.createReservation(startSqlFormat, endtSqlFormat, user, apartment);
         return "redirect:";
     }
 }
