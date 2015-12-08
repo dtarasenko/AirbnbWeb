@@ -14,6 +14,9 @@ public class ApartmentService {
 
     IApartmentDao iApartmentDao;
 
+    public ApartmentService() {
+    }
+
     public ApartmentService(IApartmentDao iApartmentDao) {
         this.iApartmentDao = iApartmentDao;
     }
