@@ -166,4 +166,11 @@ public class SpringController {
         reservationService.createReservation(startSqlFormat, endtSqlFormat, user, apartment);
         return "redirect:";
     }
+
+    @RequestMapping(value = "/myprofile", method = RequestMethod.GET)
+    public String updateUser(ModelMap model, HttpServletRequest request) {
+        String email = (String) request.getSession().getAttribute("email");
+        model.addAttribute("user", userService.findUserByEmail(email));
+        return "myprofile";
+    }
 }
