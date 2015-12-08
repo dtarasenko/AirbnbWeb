@@ -168,9 +168,35 @@ public class SpringController {
     }
 
     @RequestMapping(value = "/myprofile", method = RequestMethod.GET)
-    public String updateUser(ModelMap model, HttpServletRequest request) {
+    public String showMyProfile(ModelMap model, HttpServletRequest request) {
         String email = (String) request.getSession().getAttribute("email");
         model.addAttribute("user", userService.findUserByEmail(email));
         return "myprofile";
     }
+
+    @RequestMapping(value = "/update_profile", method = RequestMethod.POST)
+    public String updateUser(HttpServletRequest request,
+                             @RequestParam("name")String name,
+                             @RequestParam("surname")String surname,
+                             @RequestParam("email")String newEmail,
+                             @RequestParam("password")String password) {
+        String email = (String) request.getSession().getAttribute("email");
+        User user = userService.findUserByEmail(email);
+        user.setName(name);
+        user.setSurname(surname);
+        user.setEmail(newEmail);
+        user.setPassword(password);
+        userService.updateUser(user);
+        request.getSession().setAttribute("email", newEmail);
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "/myapartments", method = RequestMethod.GET)
+    public String showMyApartments(ModelMap model, HttpServletRequest request) {
+        String email = (String) request.getSession().getAttribute("email");
+        User user = userService.findUserByEmail(email);
+        model.addAttribute("apartmentList", user.getApartmentList());
+        return "myapartments";
+    }
+
 }

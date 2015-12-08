@@ -62,6 +62,10 @@ public class UserService  {
         iUserDao.updateUser(user);
     }
 
+    public void updateUser(User user) {
+        iUserDao.updateUser(user);
+    }
+
     public User getUser(Integer userId) {
         return iUserDao.getUser(userId);
     }

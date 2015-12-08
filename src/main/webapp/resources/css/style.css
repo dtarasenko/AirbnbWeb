@@ -207,7 +207,7 @@ footer {
 	background-color: #E6E6E6;
 	display: inline-block;
 	width: 1000px;
-	height: 100px;
+	height: 100%;
 	padding: 4px 4px;
 	font-size: 14px;
 	text-decoration: none;
@@ -280,6 +280,19 @@ table thead td {
 table td, th {
 	border: 1px solid black;
 	padding: 0.5rem;
+}
+
+section ul {
+  display: table;
+}
+
+section ul li {
+  display: table-row;
+  line-height: 2;
+}
+
+section ul li label, input {
+  display: table-cell;
 }
 
 /*--------------------------------------------------------------*/

@@ -3,6 +3,7 @@ package com.gojava6.airbnb.model;
 import com.gojava6.airbnb.observer.Observer;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -27,6 +28,9 @@ public class User implements Observer {
 
     @Column(name = "password", nullable = false, length = 45)
     private String password;
+
+    @OneToMany(mappedBy="user", targetEntity = Apartment.class, fetch = FetchType.EAGER)
+    private List<Apartment> apartmentList;
 
     public User() {
         super();
@@ -78,6 +82,10 @@ public class User implements Observer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Apartment> getApartmentList() {
+        return apartmentList;
     }
 
     @Override

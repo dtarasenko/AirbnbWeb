@@ -97,10 +97,6 @@ public class Apartment {
         return reservationList;
     }
 
-    public void setReservationList(List<Reservation> reservationList) {
-        this.reservationList = reservationList;
-    }
-
     @Override
     public String toString() {
         return "Apartment{" +
