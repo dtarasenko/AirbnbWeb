@@ -2,109 +2,44 @@ package com.gojava6.airbnb.dao.jpa;
 
 import com.gojava6.airbnb.dao.ICityDao;
 import com.gojava6.airbnb.model.City;
-import com.gojava6.airbnb.web.listener.EMF;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Component
 public class CityDaoJpa implements ICityDao {
 
+    @PersistenceContext
+    private EntityManager em;
+
+    @Transactional
     public void createCity(City city) {
-        EntityManager em = EMF.createEntityManager();
-        try {
-            EntityTransaction tx = em.getTransaction();
-            try {
-                tx.begin();
-                em.persist(city);
-                tx.commit();
-            } finally {
-                if (tx.isActive()) {
-                    tx.rollback();
-                }
-            }
-        } finally {
-            em.close();
-        }
+        em.persist(city);
     }
 
+    @Transactional
     public void updateCity(City city) {
-        EntityManager em = EMF.createEntityManager();
-        try {
-            EntityTransaction tx = em.getTransaction();
-            try {
-                tx.begin();
-                City updatedCity = em.find(City.class, city.getCityId());
-                updatedCity.setCityName(city.getCityName());
-                updatedCity.setUrl(city.getUrl());
-                updatedCity.setImgName(city.getImgName());
-                tx.commit();
-            } finally {
-                if (tx.isActive()) {
-                    tx.rollback();
-                }
-            }
-        } finally {
-            em.close();
-        }
+        City updatedCity = em.find(City.class, city.getCityId());
+        updatedCity.setCityName(city.getCityName());
+        updatedCity.setUrl(city.getUrl());
+        updatedCity.setImgName(city.getImgName());
     }
 
+    @Transactional
     public void deleteCity(City city) {
-        EntityManager em = EMF.createEntityManager();
-        try {
-            EntityTransaction tx = em.getTransaction();
-            try {
-                tx.begin();
-                City deletedCity = em.find(City.class, city.getCityId());
-                em.remove(deletedCity);
-                tx.commit();
-            } finally {
-                if (tx.isActive()) {
-                    tx.rollback();
-                }
-            }
-        } finally {
-            em.close();
-        }
+        City deletedCity = em.find(City.class, city.getCityId());
+        em.remove(deletedCity);
     }
 
+    @Transactional
     public List<City> getCityList() {
-        EntityManager em = EMF.createEntityManager();
-        List<City> cityList;
-        try {
-            EntityTransaction tx = em.getTransaction();
-            try {
-                tx.begin();
-                cityList = em.createQuery("SELECT c FROM City c").getResultList();
-                tx.commit();
-            } finally {
-                if (tx.isActive()) {
-                    tx.rollback();
-                }
-            }
-        } finally {
-            em.close();
-        }
-        return cityList;
+        return em.createQuery("SELECT c FROM City c").getResultList();
     }
 
     public City getCity(int cityId) {
-        EntityManager em = EMF.createEntityManager();
-        City city;
-        try {
-            EntityTransaction tx = em.getTransaction();
-            try {
-                tx.begin();
-                city = em.find(City.class, cityId);
-                tx.commit();
-            } finally {
-                if (tx.isActive()) {
-                    tx.rollback();
-                }
-            }
-        } finally {
-            em.close();
-        }
-        return city;
+        return em.find(City.class, cityId);
     }
 }

@@ -5,18 +5,18 @@ import com.gojava6.airbnb.model.Subscriber;
 import com.gojava6.airbnb.model.User;
 import com.gojava6.airbnb.observer.Observer;
 import com.gojava6.airbnb.observer.Subject;
-import com.gojava6.airbnb.web.listener.Context;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class LoyaltyProgramService implements Subject {
 
+    @Autowired
     private ISubscriberDao iSubscriberDao;
     private String loyaltyProgramName;
     private boolean available;
 
-    public LoyaltyProgramService(ISubscriberDao iSubscriberDao) {
-        this.iSubscriberDao = iSubscriberDao;
+    public LoyaltyProgramService() {
     }
 
     public void setAvailable(boolean available) {
@@ -50,7 +50,7 @@ public class LoyaltyProgramService implements Subject {
     public void notifyObservers() {
         System.out.println("\nNotifying all registered clients about new loyalty programs:");
 
-        UserService userService = (UserService) Context.getContext().getBean("userService");
+//        UserService userService = (UserService) Context.getContext().getBean("userService");
 
         List<Subscriber> subscriberList = iSubscriberDao.getSubscriberList();
 

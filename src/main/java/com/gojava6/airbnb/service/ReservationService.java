@@ -4,16 +4,19 @@ import com.gojava6.airbnb.dao.IReservationDao;
 import com.gojava6.airbnb.model.Apartment;
 import com.gojava6.airbnb.model.Reservation;
 import com.gojava6.airbnb.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.List;
 
+@Component
 public class ReservationService {
 
+    @Autowired
     IReservationDao iReservationDao;
 
-    public ReservationService(IReservationDao iReservationDao) {
-        this.iReservationDao = iReservationDao;
+    public ReservationService() {
     }
 
     public void createReservation(Date start, Date end, User user, Apartment apartment) {

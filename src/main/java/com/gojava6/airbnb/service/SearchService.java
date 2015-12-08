@@ -1,26 +1,30 @@
 package com.gojava6.airbnb.service;
 
 import com.gojava6.airbnb.model.Apartment;
-import com.gojava6.airbnb.web.listener.Context;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.sql.Date;
-
+@Component
 public class SearchService {
 
+    @Autowired
+    private ApartmentService apartmentService;
     private List<Apartment> apartmentList;
+
+    public SearchService() {
+    }
+
+    public void setApartmentList() {
+        this.apartmentList = apartmentService.getApartmentList();
+    }
 
     public List<Apartment> getApartmentList() {
         return apartmentList;
-    }
-
-    public SearchService() {
-        ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
-        this.apartmentList = apartmentService.getApartmentList();
     }
 
     public void filterByCity(String city) {
@@ -50,8 +54,6 @@ public class SearchService {
 
             java.sql.Date startSqlFormat = new java.sql.Date(startDateFormat.getTime());
             java.sql.Date endSqlFormat = new java.sql.Date(endDateFormat.getTime());
-
-            ApartmentService apartmentService = (ApartmentService) Context.getContext().getBean("apartmentService");
 
             for (Apartment apartment : apartmentList) {
                 if (apartmentService.isAvailable(apartment, startSqlFormat, endSqlFormat)) {

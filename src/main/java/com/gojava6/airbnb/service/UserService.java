@@ -3,15 +3,18 @@ package com.gojava6.airbnb.service;
 import com.gojava6.airbnb.dao.IUserDao;
 import com.gojava6.airbnb.model.User;
 import com.gojava6.airbnb.model.UserType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UserService  {
 
+    @Autowired
     IUserDao iUserDao;
 
-    public UserService(IUserDao iUserDao) {
-        this.iUserDao = iUserDao;
+    public UserService() {
     }
 
     public User findUserByEmail(String email) {
