@@ -5,6 +5,15 @@
 	<div id="modal" class="popupContainer" style="display:none;">
 		<div class="popupWrap">
 			<div class="popupContent">
+                <div class="form_user_menu">
+                    <form>
+                        <button type="button" class="mybutton"><a href="/AirbnbWeb/myprofile">My Profile</a></button>
+                        <button type="button" class="mybutton"><a href="/AirbnbWeb/myreservationlist">My Reservations</a></button>
+                        <button type="button" class="mybutton"><a href="/AirbnbWeb/myapartmentlist">My Apartments</a></button>
+                        <button type="button" class="mybutton"><a href="/AirbnbWeb/logout">Log Out</a></button>
+                    </form>
+                </div>
+
 				<div class="form_user_login">
 					<form action="login" method="POST">
 						<fieldset>
@@ -90,12 +99,14 @@
 	<script>
     	$("#trigger_popup_signup").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
     	$("#trigger_popup_login").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+    	$("#trigger_popup_menu").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
     	$("#trigger_popup_become_host").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
 
     	$(function () {
     		$("#trigger_popup_signup").click(function () {
     			$(".form_become_host").hide();
     			$(".form_user_login").hide();
+    			$(".form_user_menu").hide();
     			$(".form_user_signup").show();
     			return false;
     		});
@@ -103,13 +114,23 @@
     		$("#trigger_popup_login").click(function () {
     			$(".form_become_host").hide();
     			$(".form_user_signup").hide();
+    			$(".form_user_menu").hide();
     			$(".form_user_login").show();
     			return false;
     		});
 
+            $("#trigger_popup_menu").click(function () {
+                $(".form_become_host").hide();
+                $(".form_user_signup").hide();
+                $(".form_user_login").hide();
+                $(".form_user_menu").show();
+                return false;
+            });
+
 			$("#trigger_popup_become_host").click(function () {
 				$(".form_user_signup").hide();
 				$(".form_user_login").hide();
+				$(".form_user_menu").hide();
 				$(".form_become_host").show();
 				return false;
 			});
@@ -125,6 +146,7 @@
     			$(".form_user_login").show();
     			return false;
     		});
+
 
     		$("#popup_login2").click(function () {
 				$(".form_become_host").hide();

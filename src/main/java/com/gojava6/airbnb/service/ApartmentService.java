@@ -67,6 +67,10 @@ public class ApartmentService {
         iApartmentDao.deleteApartment(apartment);
     }
 
+    public void updateApartment(Apartment apartment) {
+        iApartmentDao.updateApartment(apartment);
+    }
+
     public Apartment getApartment(Integer apartmentId) {
         return iApartmentDao.getApartment(apartmentId);
     }

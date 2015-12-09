@@ -27,7 +27,7 @@
 
 				<% String logged = (String) session.getAttribute("logged-in");
 				if (logged == "true") { %>
-					<li><a href="/AirbnbWeb/logout">Log Out</a></li>
+					<li><a id="trigger_popup_menu" href="#modal">Menu</a></li>
 				<% } else { %>
 					<li><a id="trigger_popup_login" href="#modal">Log In</a></li>
 				<% } %>

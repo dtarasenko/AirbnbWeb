@@ -1,10 +1,7 @@
 package com.gojava6.airbnb.web;
 
 
-import com.gojava6.airbnb.model.Apartment;
-import com.gojava6.airbnb.model.ApartmentType;
-import com.gojava6.airbnb.model.User;
-import com.gojava6.airbnb.model.UserType;
+import com.gojava6.airbnb.model.*;
 import com.gojava6.airbnb.service.ApartmentService;
 import com.gojava6.airbnb.service.ReservationService;
 import com.gojava6.airbnb.service.SearchService;
@@ -164,7 +161,7 @@ public class SpringController {
         User user = userService.findUserByEmail(email);
         Apartment apartment = apartmentService.getApartment(apartmentId);
         reservationService.createReservation(startSqlFormat, endtSqlFormat, user, apartment);
-        return "redirect:";
+        return "redirect:myreservationlist";
     }
 
     @RequestMapping(value = "/myprofile", method = RequestMethod.GET)
@@ -175,7 +172,7 @@ public class SpringController {
     }
 
     @RequestMapping(value = "/update_profile", method = RequestMethod.POST)
-    public String updateUser(HttpServletRequest request,
+    public String updateUser(ModelMap model, HttpServletRequest request,
                              @RequestParam("name")String name,
                              @RequestParam("surname")String surname,
                              @RequestParam("email")String newEmail,
@@ -188,15 +185,61 @@ public class SpringController {
         user.setPassword(password);
         userService.updateUser(user);
         request.getSession().setAttribute("email", newEmail);
-        return "redirect:";
+        model.addAttribute("user", userService.findUserByEmail(newEmail));
+        return "redirect:myprofile";
     }
 
-    @RequestMapping(value = "/myapartments", method = RequestMethod.GET)
-    public String showMyApartments(ModelMap model, HttpServletRequest request) {
+    @RequestMapping(value = "/myapartmentlist", method = RequestMethod.GET)
+    public String showMyApartmentList(ModelMap model, HttpServletRequest request) {
         String email = (String) request.getSession().getAttribute("email");
         User user = userService.findUserByEmail(email);
         model.addAttribute("apartmentList", user.getApartmentList());
-        return "myapartments";
+        model.addAttribute("h1", "My Apartments");
+        model.addAttribute("h2", "");
+        return "myapartmentlist";
+    }
+
+    @RequestMapping(value = "/myapartment", method = RequestMethod.GET)
+    public String showMyApartment(@RequestParam("apartmentId")int apartmentId,
+                                  ModelMap model) {
+        Apartment apartment = apartmentService.getApartment(apartmentId);
+        model.addAttribute("apartment", apartment);
+        return "myapartment";
+    }
+
+    @RequestMapping(value = "/update_apartment", method = RequestMethod.POST)
+    public String updateMyApartment(@RequestParam("apartment_id")int apartmentId,
+                                    @RequestParam("description")String apartmentDescription,
+                                    @RequestParam("type")String apartmentType,
+                                    @RequestParam("number_of_guests")int numberOfGuests,
+                                    @RequestParam("price")int price,
+                                    ModelMap model) {
+        Apartment apartment = apartmentService.getApartment(apartmentId);
+        apartment.setApartmentDescription(apartmentDescription);
+        apartment.setApartmentType(apartmentType);
+        apartment.setNumberOfGuests(numberOfGuests);
+        apartment.setPrice(price);
+        apartmentService.updateApartment(apartment);
+        apartment = apartmentService.getApartment(apartmentId);
+        model.addAttribute("apartment", apartment);
+        return "myapartment";
+    }
+
+    @RequestMapping(value = "/myreservationlist", method = RequestMethod.GET)
+    public String showMyReservationList(ModelMap model, HttpServletRequest request) {
+        String email = (String) request.getSession().getAttribute("email");
+        User user = userService.findUserByEmail(email);
+        model.addAttribute("reservationList", user.getReservationList());
+        model.addAttribute("h1", "My Reservations");
+        model.addAttribute("h2", "");
+        return "myreservationlist";
+    }
+
+    @RequestMapping(value = "/delete_reservation", method = RequestMethod.POST)
+    public String deleteMyReservation(@RequestParam("reservation_id")int reservationId) {
+        Reservation reservation = reservationService.getReservation(reservationId);
+        reservationService.deleteReservation(reservation);
+        return "redirect:myreservationlist";
     }
 
 }

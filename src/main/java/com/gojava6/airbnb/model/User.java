@@ -32,6 +32,9 @@ public class User implements Observer {
     @OneToMany(mappedBy="user", targetEntity = Apartment.class, fetch = FetchType.EAGER)
     private List<Apartment> apartmentList;
 
+    @OneToMany(mappedBy="user", targetEntity = Reservation.class, fetch = FetchType.EAGER)
+    private List<Reservation> reservationList;
+
     public User() {
         super();
     }
@@ -86,6 +89,10 @@ public class User implements Observer {
 
     public List<Apartment> getApartmentList() {
         return apartmentList;
+    }
+
+    public List<Reservation> getReservationList() {
+        return reservationList;
     }
 
     @Override
