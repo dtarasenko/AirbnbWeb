@@ -43,8 +43,8 @@
 				<fieldset>
 					<label><input type="text" name="city" placeholder="Where do you want to go?" autofocus size="38"
 						maxlength="20" required></label>
-					<label><input type="date" name="date_start" required></label>
-					<label><input type="date" name="date_end" required></label>
+					<label><input type="text" placeholder="Check-in" onfocus="(this.type='date')" onblur="(this.type='text')" name="date_start" required></label>
+					<label><input type="text" placeholder="Check-out" onfocus="(this.type='date')" onblur="(this.type='text')"name="date_end" required></label>
 
 
                     <select name="number_of_guests">
