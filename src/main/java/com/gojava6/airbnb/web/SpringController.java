@@ -90,7 +90,7 @@ public class SpringController {
                           @RequestParam("email")String email,
                           @RequestParam("password")String password) {
         userService.createUser(name, surname, email, UserType.CLIENT, password);
-        return "redirect:";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -99,13 +99,13 @@ public class SpringController {
                         HttpServletRequest request) {
         request.getSession().setAttribute("logged-in", "true");
         request.getSession().setAttribute("email", email);
-        return "redirect:";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
         request.getSession().setAttribute("logged-in", "false");
-        return "redirect:";
+        return "redirect:/";
     }
 
 
@@ -119,7 +119,7 @@ public class SpringController {
         ApartmentType apartmentType = ApartmentType.values()[type];
         String email = (String)request.getSession().getAttribute("email");
         apartmentService.createApartment(description, apartmentType, numberOfGuests, price, email, city);
-        return "redirect:";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
